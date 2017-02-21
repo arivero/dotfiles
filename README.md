@@ -2,9 +2,9 @@
 
 ### Scrots
 
-![scrot1] 
-![scrot2] 
-![scrot3] 
+![scrot1] (https://github.com/dotfiles/blob/master/scrot1.png) 
+![scrot2] (https://github.com/dotfiles/blob/master/scrot2.png) 
+![scrot3] (https://github.com/dotfiles/blob/master/scrot3.png) 
 
 ### Info
 Dont worrie,dotfiles managed with stow, just:
