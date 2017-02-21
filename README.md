@@ -9,11 +9,11 @@
 ### Info
 Dont worrie,dotfiles managed with stow, just:
 
-	´´´sh
+	
 	git clone
 	cd dotfiles
 	stow <program name>
-	´´´sh
+	
 
 and be happy!
 
