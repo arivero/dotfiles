@@ -10,7 +10,7 @@
 Dont worrie,dotfiles managed with stow, just:
 
 	
-	git clone
+	git clone https://github.com/azapicoe/dotfiles.git
 	cd dotfiles
 	stow <program name>
 	
