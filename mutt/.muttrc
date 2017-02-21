@@ -1,0 +1,75 @@
+#======================================================================#
+# Configuracion para el mutt.
+#
+# Anael Zapico Espuelas - iilich  
+#======================================================================#
+
+#---------------------------------------------------------------------------
+# Opciones generales
+#---------------------------------------------------------------------------
+
+set realname = 'Anael Zapico'
+set imap_user = 'azapicoe@gmail.com'
+set imap_pass = ""
+set smtp_url = "smtp://azapicoe@smtp.gmail.com:587/"
+set spoolfile = imaps://imap.gmail.com:993/INBOX
+set folder = "imaps://imap.gmail.com:993"
+set record="+[Gmail]/Sent Mail"
+set postponed="+[Gmail]/Drafts"
+set header_cache="~/.mutt/cache/headers"
+set message_cachedir="~/.mutt/cache/bodies"
+set certificate_file="~/.mutt_certificates"
+set editor=vim
+set sig_dashes
+set signature="~/.signature"
+#set mailcap_path="~/.mailcap"
+set print_command="/usr/bin/muttprint %s -p {canon}"
+macro pager \cb <pipe-entry>'urlview'<enter> 'Follow links with urlview' 
+set mailcap_path 	= ~/.mutt/mailcap
+auto_view text/html
+
+
+# These two lines appear to be needed on some Linux distros, like Arch Linux
+set ssl_starttls = yes
+set ssl_force_tls = yes
+
+set locale="es_ES"
+set allow_8bit
+# Formato de la lista de correos
+set index_format="%3C %Z %{%b %d} (%4l) [%-15.15L] %s"
+unset arrow_cursor		#Usar una flecha en vez de resaltar la linea
+
+#---------------------------------------------------------------------------
+# Colores
+#---------------------------------------------------------------------------
+
+color attachment 	magenta 		default
+color body     		brightgreen	default [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+
+color body     		brightyellow		default (http|ftp)://[\-\.\,/%~_:?\#a-zA-Z0-9]+
+color header		brightred		default	^Date:
+color header   		brightblue	 	default ^(From|Reply-To):
+color header   		brightgreen	 	default ^(To|Reply-To|Cc|Bcc):
+color header   		brightmagenta	default ^Subject:
+color header		green			default	^X-.*:
+color header		green			default	^-Agent:
+color hdrdefault 	cyan 			default    
+color indicator 	brightgreen 	default
+color markers 		brightred 		default
+color message 		brightblue 		default
+color normal		white			default
+color quoted 		yellow 			default
+color quoted1 		brightblack		default
+color quoted2 		magenta			default
+color search		brightyellow	magenta
+color signature 	brightblack		default
+color error 		brightred 		default
+color status 		brightyellow 	blue
+color tilde 		magenta 		default
+color tree 			brightred		default
+color underline 	red			 	default
+
+# Colores del indice
+color index			white			default  ~A         # Todos
+color index			brightwhite		default  ~N         # Nuevo
+color index			magenta			default  ~T         # Marcado
+color index 		brightblack 	default  ~D 		# Borrado

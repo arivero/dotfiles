@@ -1,0 +1,42 @@
+*font: xft:Hack for Powerline:style=Bold:size=12
+*scrollBar: false
+*letterSpace: 0
+URxvt.perl-ext-common:  ...,resize-font,...
+URxvt.resize-font.smaller: C-m
+URxvt.resize-font.bigger: C-n
+
+! --- XRES SRC
+*foreground:    #ebdbb2
+*background:    #282828
+
+!black
+*color0:    #1d2021
+*color8:    #665c54
+!red
+*color1:    #cc241d
+*color9:    #fb4934
+!green
+*color2:    #98971a
+*color10:   #b8bb26
+!yellow
+*color3:    #d79921
+*color11:   #fabd2f
+!blue
+*color4:    #458588
+*color12:   #83a598
+!magenta
+*color5:    #b16286
+*color13:   #d3869b
+!cyan
+*color6:    #689d6a
+*color14:   #8ec07c
+!white
+*color7:    #dbae93
+*color15:   #fbf1c7
+
+! ===========[rofi configuration]======
+rofi.color-enabled: true
+rofi.color-window: #393939, #393939, #268bd2
+rofi.color-normal: #393939, #ffffff, #393939, #268bd2, #ffffff
+rofi.color-active: #393939, #268bd2, #393939, #268bd2, #205171
+rofi.color-urgent: #393939, #f3843d, #393939, #268bd2, #ffc39c

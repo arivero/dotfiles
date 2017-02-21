@@ -1,0 +1,225 @@
+
+# =============[Configuracion de Anael]=====================================================
+
+font pango:monospace 8
+new_window pixel 6
+
+#Autostart
+
+exec_always --no-startup-id "xset +fp $HOME/.fonts"
+exec_always --no-startup-id "xset -dpms s off"
+exec_always --no-startup-id ~/scripts/conky.sh
+exec_always --no-startup-id compton
+#exec_always --no-startup-id ~/scripts/polybar_launch.sh
+exec_always --no-startup-id feh --bg-scale /home/anael/Imagenes/ciervo.png
+exec_always  compton --config ~/home/anael/.compton.conf
+exec --no-startup-id synclient TapButton1=1
+exec --no-startup-id synclient TapButton2=3
+exec --no-startup-id synclient TapButton3=2
+exec --no-startup-id synclient PalmDetect=1
+exec --no-startup-id synclient PalmMinWidth=2 
+exec --no-startuo-id synclient PalmMinZ=50
+exec --no-startup-id twmnd
+exec_always --no-startup-id megasync
+exec_always --no-startup-id mailnag
+exec_always --no-startup-id albert
+#exec_always --no-startup-id tilda
+
+#Polybar
+
+bar {
+	i3bar_command ~/scripts/polybar_launch.sh
+	workspace_buttons yes
+}
+
+# Tilda es floating
+for_window [class="(?i)albert"] floating enable
+
+
+#Carga de fuentes (pegarle un repaso)
+
+exec xset fp+ /home/anael/.fonts/misc
+exec xset fp+ /home/anael/.fonts/ohsnap
+exec xset fp+ /home/anael/.fonts/terminesspowerline
+exec xset fp+ /home/anael/.fonts/font-awesome
+exec xset fp+ /home/anael/.fonts/inconsolatapw.ttf
+exec xset fp+ /home/anael/.fonts/Inconsolata for Powerline
+exec xset +fp /home/anael/.fonts/misc
+exec xset +fp /home/anael/.fonts/ohsnap
+exec xset +fp /home/anael/.fonts/terminesspowerline
+exec xset +fp /home/anael/.fonts/font-awesome
+exec xset +fp /home/anael/.fonts/inconsolatapw.ttf
+exec xset +fp /home/anael/.fonts/Inconsolata for Powerline
+
+#Autostart de aplicaciones
+exec_always --no-startup-id i3-msg 'workspace 4;exec urxvt -e cmus;workspace 5;exec urxvt -e ranger;workspace 7;exec google-chrome-stable --app=https://web.whatsapp.com;'
+exec_always --no-startup-id i3-msg 'workspace 1'
+#exec_always --no-startup-id i3-msg 'workspace 4; exec urxvt -e cmus'
+#exec_always --no-startup-id i3-msg 'workspace 5; exec urxvt -e ranger'
+#exec_always --no-startup-id i3-msg 'workspace 7; exec Franz;workspace 1'
+
+#Cambio de la distribuccion del tecllado
+exec_always --no-startup-id setxkbmap es
+
+#Margenes i3
+
+gaps inner 15
+gaps outer 15
+smart_gaps on
+
+# Hacer los bordes naranjas
+set $back               #1d1F21
+set $black              #282A2E
+set $grey               #243e36
+set $lightgrey          #707880
+set $white              #C5C8C6
+set $yellow             #ff8000
+set $red                #CC6666
+set $darkred            #A54242
+set $green              #B5BD56
+
+#class                  border      backgr.     text        split
+client.focused          $yellow     $yellow       $black    $yellow
+client.focused_inactive $grey       $grey       $lightgrey  $grey
+client.unfocused        $grey       $grey       $lightgrey  $grey
+client.urgent           $red        $red        $black      $red
+client.background       $back
+
+#Mover $ws entre pantallas
+bindsym $mod+x move workspace to output right
+
+# moverse entre workspaces con u y p
+bindsym $mod+u workspace prev
+bindsym $mod+p workspace next
+
+# Correr albert (rofi alternative)
+bindsym $mod+space exec --no-startup-id albert show
+
+#Tecla maestra
+set $mod Mod1
+workspace_auto_back_and_forth yes
+
+# ON OFF del touchpad 
+bindcode 73 exec i3-msg exec synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*=.*0') ;exec xdotool mousemove 2000 2000
+
+#screen locker
+exec xautolock -time 15 -locker '~/scripts/autolock.sh' &
+
+
+# Pulse Audio controls
+#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id pavolume volup --nolimit --noshow #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pavolume voldown --noshow #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pavolume mutetoggle --noshow # mute sound
+bindsym XF86KbdBrightnessUp exec kbdlight up
+bindsym XF86KbdBrightnessDown exec kbdlight down
+#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5
+
+
+# =============================================================================================
+
+#configuracion general
+
+floating_modifier $mod
+bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+q kill
+bindsym $mod+d exec rofi -show run -width 700 -fg "#B0E670" -bg "#14161F" -hlfg "#14161F" -hlbg "#B0E670" -bc "#14161F" -location 0 -lines 19 -bw 0 -font "DejaVu Sans Book 16" -padding 50 -separator-style none -opacity 50applications
+
+# Cambiar focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+ntilde focus right
+
+
+# Mover ventana en focus
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+ntilde move right
+
+# Tambien se puede con las flechas
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Dividir en horizontal
+bindsym $mod+h split h
+
+# Dividir en vertical
+bindsym $mod+v split v
+
+# Pantalla completa
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Cambiar entre tilling / floating
+bindsym $mod+Shift+space floating toggle
+
+# Cambiar focus entre la ventana flotante y la tilling
+#bindsym $mod+space focus mode_toggle
+
+# Focus al contenedor indicado
+bindsym $mod+a focus parent
+
+# Cambiar el workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# Mover ventanas a otro workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# Recargar el archivo de configuracion
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# Salir de i3 (y con el de xsession)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m '¿Cerrar sesion actual?' -b 'Si' 'i3-msg exit'"
+
+
+# Modo de redimensionado
+mode "resize" {
+        # Los siguientes se activan al entrar en el modo seleccionado
+
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym ntilde resize grow width 10 px or 10 ppt
+
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # Salir del modo, back o escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
